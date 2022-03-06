@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="h1 text-center mb-3">MANAGEMENT DEPARTMENT</div>
+    <hr>
+
+    <form [formGroup] = "departmentForm">
+        <div class="row">
+            <div class="col-md-1 mt-3 col-sm-12">รหัสแผนก : </div>
+            <div class="col-md-11 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="id"></div>
+
+            <div class="col-md-1 mt-3 col-sm-12">ชื่อแผนก : </div>
+            <div class="col-md-11 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="name"></div>
+
+            <div class="btn btn-success mt-3" (click)="btnEvent()">{{btnText}}</div>
+        </div>
+    </form>
+
+    <hr>
+
+    <table class="table table-striped text-center">
+        <thead class="thead-inverse">
+            <tr>
+                <th>รหัสแผนก</th>
+                <th>ชื่อแผนก</th>
+                <th>แก้ไข</th>
+                <th>ลบ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="mt-3" *ngFor="let d of departments">
+                <td>{{d?.id}}</td>
+                <td>{{d?.name}}</td>
+                <td>
+                    <div class="btn btn-info" (click)="editCategory(d?._id)">แก้ไข</div>
+                </td>
+                <td>
+                    <div class="btn btn-danger" (click)="deleteCategory(d?._id)">ลบ</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

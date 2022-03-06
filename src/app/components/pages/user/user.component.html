@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="h1 text-center mb-3">MANAGEMENT MEMBER</div>
+    
+    <hr>
+    <form [formGroup] = "userForm">
+        <div class="row">
+            <div class="col-md-1 mt-3">รหัสสมาชิก : </div>
+            <div class="col-md-11 mt-3"><input type="text" class="form-control" formControlName="id"></div>
+
+            <div class="col-md-1 mt-3">รหัสผ่าน : </div>
+            <div class="col-md-11 mt-3"><input type="password" class="form-control" formControlName="password"></div>
+
+            <div class="col-md-1 mt-3">ชื่อสมาชิก : </div>
+            <div class="col-md-11 mt-3"><input type="text" class="form-control" formControlName="name"></div>
+
+            <div class="col-md-12 mt-3">ประเภทสมาชิก : </div>
+            <select name="" id="" class="mt-3 form-control" formControlName="category">
+                <option *ngFor="let c of categories" [value]='c?._id'>{{c.name}}</option>
+            </select>
+
+            <div class="col-md-12 mt-3">แผนก : </div>
+            <select name="" id="" class="mt-3 form-control" formControlName="department">
+                <option *ngFor="let d of departments" [value]='d?._id'>{{d.name}}</option>
+            </select>
+
+            <div class="btn btn-success mt-3" (click)="btnEvent()">{{btnText}}</div>
+        </div>
+    </form>
+    <div class="h3 text-center mt-5">ตารางแสดงข้อมูล</div>
+    <table class="text-center table table-striped|sm|bordered|hover|inverse table-inverse table-responsive  mt-5">
+        <thead class="thead-inverse|thead-default">
+            <tr>
+                <th>รหัสสมาชิก</th>
+                <th>ชื่อสมาชิก</th>
+                <th>ประเภทสมาชิก</th>
+                <th>แผนก</th>
+                <th>แก้ไข</th>
+                <th>ลบ</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let u of users">
+                    <td scope="row">{{u.id}}</td>
+                    <td>{{u.name}}</td>
+                    <td>{{u.category.name}}</td>
+                    <td>{{u.department.name}}</td>
+                    <td><div class="btn btn-info" (click)="editUser(u._id)">แก้ไข</div></td>
+                    <td><div class="btn btn-danger" (click)="deleteUser(u._id)">ลบ</div></td>
+                </tr>
+            </tbody>
+    </table>
+    
+
+</div>
+

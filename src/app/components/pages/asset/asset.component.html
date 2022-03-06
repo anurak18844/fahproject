@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="h1 text-center mb-3">MANAGEMENT CATEGORY</div>
+    <hr>
+
+    <form [formGroup] = "assetForm">
+        <div class="row">
+            <div class="col-md-3 mt-3 col-sm-12">รหัสครุพัณฑ์ : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="id"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ชื่อครุพัณฑ์ : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="name"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ได้มาโดย : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="acquired"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">หน่วย : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="unit"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ราคา : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="price"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">อายุการใช้งาน : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="age"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">หมายเหตุ : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="comment"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ปีที่รับทราบการชำรุด : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="acknowledsedyear"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ปีที่ให้จำหน่าย : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="approvalyear"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ปีที่ดำเนินการจำหน่าย : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="removeyear"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">ปีที่ตัดออกจากบัญชีคุม : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="dischargedyear"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">สาเหตุการแทงจำหน่าย : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="reasonforselling"></div>
+
+            <div class="col-md-3 mt-3 col-sm-12">สถานะปัจจุบัน : </div>
+            <div class="col-md-9 mt-3 col-sm-12"><input type="text" class="form-control" formControlName="status"></div>
+
+            <div class="btn btn-success mt-3" (click)="btnEvent()">{{btnText}}</div>
+        </div>
+    </form>
+
+    <hr>
+
+    <table class="table table-striped text-center">
+        <thead class="thead-inverse">
+            <tr>
+                <th>รหัสครุพัณฑ์</th>
+                <th>ชื่อครุพัณฑ์</th>
+                <th>ได้มาโดย</th>
+                <th>หน่วย</th>
+                <th>ราคา</th>
+                <th>อายุการใช้งาน</th>
+                <th>หมายเหตุ</th>
+                <th>ปีที่รับทราบการชำรุด</th>
+                <th>ปีที่ให้จำหน่าย</th>
+                <th>ปีที่ดำเนินการจำหน่าย</th>
+                <th>ปีที่ตัดออกจากบัญชีคุม</th>
+                <th>สาเหตุการแทงจำหน่าย</th>
+                <th>สถานะปัจจุบัน</th>
+                <th>แก้ไข</th>
+                <th>ลบ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="mt-3" *ngFor="let a of assets">
+                <td>{{a?.id}}</td>
+                <td>{{a?.name}}</td>
+                <td>{{a?.acquired}}</td>
+                <td>{{a?.unit}}</td>
+                <td>{{a?.price}}</td>
+                <td>{{a?.age}}</td>
+                <td>{{a?.comment}}</td>
+                <td>{{a?.acknowledsedyear}}</td>
+                <td>{{a?.approvalyear}}</td>
+                <td>{{a?.removeyear}}</td>
+                <td>{{a?.dischargedyear}}</td>
+                <td>{{a?.reasonforselling}}</td>
+                <td>{{a?.status}}</td>
+                <td>
+                    <div class="btn btn-info" (click)="editAsset(a?._id)">แก้ไข</div>
+                </td>
+                <td>
+                    <div class="btn btn-danger" (click)="deleteAsset(a?._id)">ลบ</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

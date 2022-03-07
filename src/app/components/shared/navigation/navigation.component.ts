@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  currentUser: any;
+  isLoggedIn = false;
 
-  constructor() { }
+
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorage.getToken();
+    if (this.isLoggedIn) {
+      this.currentUser = this.tokenStorage.getUser();
+      console.log(this.currentUser);
+    }
   }
-
+  logout() {
+    this.tokenStorage.signOut();
+    location.reload();
+  }
 }

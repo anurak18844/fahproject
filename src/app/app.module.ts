@@ -11,6 +11,7 @@ import { UserComponent } from './components/pages/user/user.component';
 import { MainComponent } from './components/pages/main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/pages/login/login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryComponent,
     DepartmentComponent,
     UserComponent,
-    MainComponent
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -12,34 +12,42 @@ export class UserService {
   private url = `${environment.serviceUrl}/user` //Alt+96 = ``
   constructor(private http: HttpClient) { }
 
-  getUsers(){
+  getUsers() {
     let getUrl = `${this.url}`;
     return this.http.get<any>(getUrl);
   }
 
-  getUserById(id: any){
+  getUserById(id: any) {
     let getUrl = `${this.url}/${id}`;
     return this.http.get<any>(getUrl);
   }
 
-  deleteUser(id: any){
+  deleteUser(id: any) {
     let getUrl = `${this.url}/${id}`;
     return this.http.delete<any>(getUrl);
   }
 
-  addUser(user: any){
+  addUser(user: any) {
     let getUrl = `${this.url}/register`;
-    return this.http.post<any>(getUrl,user)
-    .pipe(map((res)=>{
-      return res;
-    }));
+    return this.http.post<any>(getUrl, user)
+      .pipe(map((res) => {
+        return res;
+      }));
   }
 
-  updateUser(id: any, user: any){
+  updateUser(id: any, user: any) {
     let getUrl = `${this.url}/${id}`;
-    return this.http.put<any>(getUrl,user)
-    .pipe(map((res)=>{
-      return res;
-    }))
+    return this.http.put<any>(getUrl, user)
+      .pipe(map((res) => {
+        return res;
+      }))
   }
+  login(login: any) {
+    return this.http.post<any>(`${this.url}/login`, login)
+      .pipe(map((res) => {
+        return res;
+      }));
+  }
+
+
 }

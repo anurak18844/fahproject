@@ -1,0 +1,36 @@
+<div *ngIf="!isLogin">
+<div class="h1 text-center">
+    Login
+</div>
+<hr>
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center" style="color:red">
+                {{errMsg}}
+            </div>
+        </div>
+        <form [formGroup]="loginForm">
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-12 col-form-label">Id : </label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="aaaa@xxx.com" formControlName="id">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="password" class="col-sm-12 col-form-label">Password</label>
+                <div class="col-sm-12">
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder="Your Password" formControlName="password">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" (click)="doLogin()">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<app-main *ngIf="isLogin"></app-main>

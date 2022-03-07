@@ -102,7 +102,7 @@ export class DepartmentComponent implements OnInit {
         )
         this.router.navigateByUrl('/', { skipLocationChange: true })
           .then(() => this.router.navigate(['/department']));
-      });
+        });
     }
   }
 

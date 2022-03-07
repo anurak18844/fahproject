@@ -26,12 +26,16 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="#">การตรวจนับประจำปี</a>
                 </li>
-                <li class="nav-item dropdown">
+
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="/login">LOGIN</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isLoggedIn">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">ADMIN</a>
+                        aria-haspopup="true" aria-expanded="false">{{ currentUser.name }}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" routerLink="/profile">โปรไฟล์</a>
-                        <a class="dropdown-item" routerLink="/">ออกจากระบบ</a>
+                        <a class="dropdown-item" routerLink="/#">Profile</a>
+                        <a class="dropdown-item" routerLink="/" (click)="logout()">Logout</a>
                     </div>
                 </li>
             </ul>
